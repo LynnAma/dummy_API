@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "68a84187-d354-4f5f-bd9f-5b4326dedcc4",
+		"name": "Dummy API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26216903"
+	},
+	"item": [
+		{
+			"name": "Get Employees",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains employee name Tiger\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0].employee_name).to.eql(\"Tiger Nixon\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{baseUrl}}/api/v{{version}}/employees",
+					"protocol": "https",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v{{version}}",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
